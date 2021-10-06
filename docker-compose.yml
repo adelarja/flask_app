@@ -1,0 +1,15 @@
+flaskapp:
+    image: test_docker:latest
+    links:
+     - mariadb:mysql
+    ports:
+     - "8000:8000"
+    #volumes:
+    # - ./code:./
+mariadb:
+    image: mariadb
+    environment:
+     - MYSQL_ROOT_PASSWORD=password
+     - MYSQL_DATABASE=dreamsteam_db
+    volumes:
+     - ./database:/var/lib/mysql
