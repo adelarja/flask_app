@@ -1,15 +1,15 @@
 flaskapp:
     image: test_docker:latest
     links:
-     - mariadb:mysql
+     - mysql
     ports:
      - "8000:8000"
-    #volumes:
-    # - ./code:./
-mariadb:
-    image: mariadb
+mysql:
+    image: mysql
     environment:
      - MYSQL_ROOT_PASSWORD=password
      - MYSQL_DATABASE=dreamsteam_db
     volumes:
-     - ./database:/var/lib/mysql
+     - ~/Downloads/database:/var/lib/mysql
+    ports:
+      - "3306:3306"
